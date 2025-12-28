@@ -1,0 +1,76 @@
+[project]
+name = "pubmed-advanced-mcp"
+version = "1.0.0"
+description = "A FastMCP server exposing comprehensive PubMed/PMC research APIs as intelligent tools for LLM applications"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "PubMed MCP Team"}
+]
+keywords = [
+    "mcp",
+    "fastmcp",
+    "pubmed",
+    "ncbi",
+    "biomedical",
+    "literature",
+    "research",
+    "llm",
+    "ai"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+
+dependencies = [
+    "fastmcp>=2.0.0",
+    "httpx>=0.25.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black",
+    "ruff",
+]
+
+[project.scripts]
+pubmed-mcp = "src.server:mcp.run"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/pubmed-advanced-mcp"
+Documentation = "https://github.com/yourusername/pubmed-advanced-mcp#readme"
+Repository = "https://github.com/yourusername/pubmed-advanced-mcp"
+Issues = "https://github.com/yourusername/pubmed-advanced-mcp/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I", "N", "UP"]
